@@ -9,6 +9,8 @@ import com.example.comfynovel.databinding.FragmentHomeBinding
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
+
+
     override fun viewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentHomeBinding {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding
