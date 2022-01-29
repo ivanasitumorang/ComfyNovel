@@ -8,10 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.comfynovel.databinding.ItemNovelBinding
 import com.squareup.picasso.Picasso
 
-class NovelListAdapter : ListAdapter<Novel, NovelListAdapter.NovelVH>(NovelDiffUtilCallback) {
+class NovelListAdapter(private val clickListener: (Novel) -> Unit) :
+    ListAdapter<Novel, NovelListAdapter.NovelVH>(NovelDiffUtilCallback) {
 
     class NovelVH(private val binding: ItemNovelBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(novel: Novel, position: Int) {
+        fun bind(novel: Novel, clickListener: (Novel) -> Unit, position: Int) {
             with(binding) {
                 setupNovelSection(novel.section)
 
@@ -22,6 +23,8 @@ class NovelListAdapter : ListAdapter<Novel, NovelListAdapter.NovelVH>(NovelDiffU
                 tvRanking.text = position.toString()
                 tvChapter.text = "Ch ${novel.lastChapter}"
                 tvLastUpdate.text = novel.lastUpdate
+
+                root.setOnClickListener { clickListener(novel) }
             }
         }
 
@@ -56,7 +59,7 @@ class NovelListAdapter : ListAdapter<Novel, NovelListAdapter.NovelVH>(NovelDiffU
     }
 
     override fun onBindViewHolder(holder: NovelVH, position: Int) {
-        holder.bind(getItem(position), position + 1)
+        holder.bind(getItem(position), clickListener, position + 1)
     }
 }
 

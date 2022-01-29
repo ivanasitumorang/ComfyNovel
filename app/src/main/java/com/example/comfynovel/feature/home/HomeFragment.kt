@@ -43,13 +43,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     private fun setupUI() = with(binding) {
-        trendingNovelAdapter = NovelListAdapter()
+        trendingNovelAdapter = NovelListAdapter {
+            showToast("Trending : ${it.id} - ${it.title}")
+        }
         rvTrending.adapter = trendingNovelAdapter
 
-        updatesNovelAdapter = NovelListAdapter()
+        updatesNovelAdapter = NovelListAdapter {
+            showToast("Updates : ${it.id} - ${it.title}")
+        }
         rvUpdates.adapter = updatesNovelAdapter
 
-        completedNovelAdapter = NovelListAdapter()
+        completedNovelAdapter = NovelListAdapter {
+            showToast("Completed : ${it.id} - ${it.title}")
+        }
         rvCompleted.adapter = completedNovelAdapter
     }
 
