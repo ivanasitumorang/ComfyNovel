@@ -13,5 +13,6 @@ data class Novel(
 enum class NovelSection {
     RecentUpdate,
     Trending,
-    Completed
+    Completed,
+    Continue
 }

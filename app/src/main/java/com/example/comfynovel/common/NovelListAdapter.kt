@@ -13,9 +13,28 @@ class NovelListAdapter : ListAdapter<Novel, NovelListAdapter.NovelVH>(NovelDiffU
     class NovelVH(private val binding: ItemNovelBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(novel: Novel, position: Int) {
             with(binding) {
-                Picasso.get().load(novel.imageUrl).into(ivCover)
-                tvTitle.text = novel.title
+                setupNovelSection(novel.section)
+
+                Picasso.get()
+                    .load(novel.imageUrl)
+                    .into(ivCover)
+                tvTitle.text = novel.title.trim()
                 tvRanking.text = position.toString()
+                tvChapter.text = "Ch ${novel.lastChapter}"
+                tvLastUpdate.text = novel.lastUpdate
+            }
+        }
+
+        private fun setupNovelSection(section: NovelSection) = with(binding) {
+            when (section) {
+                NovelSection.Trending -> {
+                    tvChapter.hide()
+                    tvLastUpdate.hide()
+                    tvRanking.show()
+                }
+                NovelSection.Continue -> {
+                    tvLastUpdate.hide()
+                }
             }
         }
 

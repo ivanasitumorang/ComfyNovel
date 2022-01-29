@@ -6,28 +6,10 @@
     android:layout_height="wrap_content"
     android:layout_marginEnd="16dp">
 
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/gTrending"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="tvRanking" />
-
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/gRecentUpdates"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="tvChapter, tvLastUpdate" />
-
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/gContinue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="tvChapter" />
-
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/ivCover"
-        android:layout_width="150dp"
-        android:layout_height="215dp"
+        android:layout_width="125dp"
+        android:layout_height="180dp"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,11 +24,9 @@
         android:background="@drawable/bg_rounded_rectangle"
         android:textColor="#6F6F6F"
         android:textStyle="bold"
-        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Ch 1441"
-        tools:visibility="visible" />
+        tools:text="Ch 1441" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvRanking"
@@ -55,10 +35,12 @@
         android:alpha="0.5"
         android:textColor="#FF5C00"
         android:textSize="100sp"
+        android:visibility="gone"
         app:fontFamily="@font/rampart_one_regular"
         app:layout_constraintBottom_toBottomOf="@+id/ivCover"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:text="1" />
+        tools:text="1"
+        tools:visibility="visible" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTitle"
